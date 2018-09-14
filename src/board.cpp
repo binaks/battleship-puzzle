@@ -3,9 +3,15 @@
 #include "../include/board.h"
 
 Board::Board() {
-    n_cols = 10;
-    n_rows = 10;
-   
+    int n_cols = 10;
+    int n_rows = 10;
+    
+    Board(n_cols,n_rows);
+}
+
+
+Board::Board(int n_cols, int n_rows) {
+    
     // Initializing the matrix with water tiles 
     std::vector <Cell> placeholder;
 

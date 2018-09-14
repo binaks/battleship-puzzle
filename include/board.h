@@ -14,7 +14,7 @@ public:
     std::vector < std::vector <Cell> > cells;
 
     Board ();
-    Board (int, int, std::vector < std::vector <Cell> >);
+    Board (int, int);
 
     void drawBoard();     // Prints the board
     void placeShip(Ship); // Places a ship in a random valid location
