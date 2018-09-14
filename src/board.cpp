@@ -5,7 +5,8 @@
 Board::Board() {
     n_cols = 10;
     n_rows = 10;
-    
+   
+    // Initializing the matrix with water tiles 
     std::vector <std::string> placeholder;
 
     for (auto i(0); i < n_rows; ++i) {
@@ -18,6 +19,7 @@ Board::Board() {
 }
 
 void Board::drawBoard() {
+// Prints the board
     std::cout << std::endl;
 
     for (auto i(0); i < n_rows; ++i) {
@@ -29,4 +31,21 @@ void Board::drawBoard() {
     }
 
     std::cout << std::endl;
+}
+
+void Board::placeShip(Ship ship) {
+    // coordinates to cell where the ship will be placed
+    int x = 2;
+    int y = 3;
+    // TODO: assign x,y random values
+
+    // placing the battleship
+    if (ship.size == 4) {
+        // if the cell is free
+        if (cellToString(cells[x][y]) == WATER) {
+            // TODO: place ship in the cell
+        } else {
+            // TODO: place ship in another cell
+        } 
+    }
 }
