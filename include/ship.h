@@ -5,7 +5,7 @@
 
 class Ship {
 public:
-    string name;
+    std::string name;
     int size;
 
     Ship();
