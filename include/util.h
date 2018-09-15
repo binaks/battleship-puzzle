@@ -3,4 +3,6 @@
 
 int randomize(int, int);
 
+bool isValid (int, int, int);
+
 #endif
