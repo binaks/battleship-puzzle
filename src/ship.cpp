@@ -1,5 +1,5 @@
 #include "../include/ship.h"
 
-Ship::Ship() {
-    size = 1;
+Ship::Ship(int _size) {
+    size = _size;
 }

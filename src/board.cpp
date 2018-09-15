@@ -14,11 +14,11 @@ Board::Board(int n_cols, int n_rows) {
     // Initializing the matrix with water tiles 
     std::vector <Cell> placeholder;
 
-    for (auto i(0); i <= n_rows; ++i) {
+    for (auto i(0); i <= n_rows + 1; ++i) {
         cells.push_back(placeholder);
 
-        for (auto j(0); j <= n_cols; ++j) {
-            if (i == 0 or j == 0 or i == n_rows or j == n_cols) {
+        for (auto j(0); j <= n_cols + 1; ++j) {
+            if (i == 0 or j == 0 or i == (n_rows + 1) or j == (n_cols + 1)) {
                 cells[i].push_back(BORDER);
             } else {
                 cells[i].push_back(WATER);
@@ -31,9 +31,9 @@ void Board::drawBoard() {
 // Prints the board
     std::cout << std::endl;
 
-    for (auto i(0); i <= n_rows; ++i) {
+    for (auto i(0); i <= n_rows + 1; ++i) {
         std::cout << std::setw(20) << std::setfill(' ');
-        for (auto j(0); j <= n_cols; ++j) {
+        for (auto j(0); j <= n_cols + 1; ++j) {
             std::cout << cellToString(cells[i][j]) << " ";
         }
         std::cout << std::endl;
@@ -42,11 +42,24 @@ void Board::drawBoard() {
     std::cout << std::endl;
 }
 
-void Board::placeShip(Ship ship) {
-    // coordinates to cell where the ship will be placed
-    int x = 2;
-    int y = 3;
-    // TODO: assign x,y random values
+void Board::generate_puzzle() {
+
+    // creating the ships
+    Ship battle_ship(4, );
+    Ship cruiser(3);
+    Ship destroyer(2);
+    Ship subimarine(1);
+    // coordinates to cell where the ship will be places
+    // placing the battleship
+    
+    
+    int x = randomize(1,n_rows);
+    int y = randomize(1,n_cols);
+    // finding a free position
+    while ( cells[x][y] != WATER ){
+        x = randomize(1,n_rows);
+        y = randomize(1,n_cols);
+    }
 
     // placing the battleship
     if (ship.size == 4) {
@@ -57,4 +70,8 @@ void Board::placeShip(Ship ship) {
             // TODO: place ship in another cell
         } 
     }
+}
+
+void Board::placeShip() {
+
 }
