@@ -30,6 +30,7 @@ void writePuzzles (int qty, int rows, int cols) {
     for (auto i(0); i < qty; i++) {
         ofs << "PUZZLE " << i+1 << std::endl;
 
+        // Placeholder for randomly generated puzzle
         Board puzzle(rows, cols);
 
         puzzle.drawBoard(&ofs);
