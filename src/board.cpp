@@ -2,15 +2,14 @@
 #include <iomanip>
 #include "../include/board.h"
 
-Board::Board() {
-    int n_cols = 10;
-    int n_rows = 10;
-    
-    Board(n_cols,n_rows);
-}
+Board::Board()
+: Board(10,10) {}
 
 
 Board::Board(int n_cols, int n_rows) {
+
+    this->n_cols = n_cols;
+    this->n_rows = n_rows;
     
     // Initializing the matrix with water tiles 
     std::vector <Cell> placeholder;

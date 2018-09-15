@@ -6,12 +6,12 @@
 using namespace std;
 
 int main (int argc, char *argv[]) {
-    //int puzzles;
+    int puzzles;
     int cols;
     int rows;
      
     if ( argc > 3 ){
-        //puzzles = stoi(argv[1]);
+        puzzles = stoi(argv[1]);
         cols = stoi(argv[2]);
         rows = stoi(argv[3]);
 
