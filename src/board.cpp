@@ -14,11 +14,15 @@ Board::Board(int n_cols, int n_rows) {
     // Initializing the matrix with water tiles 
     std::vector <Cell> placeholder;
 
-    for (auto i(0); i < n_rows; ++i) {
+    for (auto i(0); i <= n_rows; ++i) {
         cells.push_back(placeholder);
 
-        for (auto j(0); j < n_cols; ++j) {
-            cells[i].push_back(WATER);
+        for (auto j(0); j <= n_cols; ++j) {
+            if (i == 0 or j == 0 or i == n_rows or j == n_cols) {
+                cells[i].push_back(BORDER);
+            } else {
+                cells[i].push_back(WATER);
+            }
         }
     }
 }
@@ -27,9 +31,9 @@ void Board::drawBoard() {
 // Prints the board
     std::cout << std::endl;
 
-    for (auto i(0); i < n_rows; ++i) {
+    for (auto i(0); i <= n_rows; ++i) {
         std::cout << std::setw(20) << std::setfill(' ');
-        for (auto j(0); j < n_cols; ++j) {
+        for (auto j(0); j <= n_cols; ++j) {
             std::cout << cellToString(cells[i][j]) << " ";
         }
         std::cout << std::endl;
