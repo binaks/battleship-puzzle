@@ -1,5 +1,3 @@
-#include <fstream>
-#include <string>
 #include <cstdlib>
 #include <ctime>
 
@@ -21,17 +19,9 @@ bool isValid (int arg, int min, int max) {
 
 // Writes generated puzzles in a file
 void writePuzzles (int qty, int rows, int cols) {
-    std::string puzzles = "puzzles"; // Name of the file where the puzzles will be written
-    std::ifstream ifs;
-    
-    // Opening the file
-    ifs.open(puzzles);
-
-    // 
     for (auto i(0); i < qty; i++) {
+        Board puzzle(rows, cols);
+
+        puzzle.drawBoard();
     }
-
-    // Closing the file
-    ifs.close();
-
 }

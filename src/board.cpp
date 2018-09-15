@@ -1,5 +1,8 @@
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+#include <string>
+
 #include "../include/board.h"
 #include "../include/util.h"
 
@@ -29,18 +32,26 @@ Board::Board(int n_rows, int n_cols) {
 }
 
 void Board::drawBoard() {
-// Prints the board
-    std::cout << std::endl;
+    std::string puzzles = "puzzles"; // Name of the file where the puzzles will be written
+    std::ofstream ofs;
+    
+    // Opening the file
+    ofs.open(puzzles);
+    
+    ofs << std::endl;
 
     for (auto i(0); i <= n_rows + 1; ++i) {
-        std::cout << std::setw(20) << std::setfill(' ');
+        ofs << std::setw(20) << std::setfill(' ');
         for (auto j(0); j <= n_cols + 1; ++j) {
-            std::cout << cellToString(cells[i][j]) << " ";
+            ofs << cellToString(cells[i][j]) << " ";
         }
-        std::cout << std::endl;
+        ofs << std::endl;
     }
 
-    std::cout << std::endl;
+    ofs << std::endl;
+
+    //Closing the file
+    ofs.close();
 }
 
 void Board::generate_puzzle() {
