@@ -32,7 +32,7 @@ void writePuzzles (int qty, int rows, int cols) {
 
         // Placeholder for randomly generated puzzle
         Board puzzle(rows, cols);
-
+        puzzle.generate_puzzle();
         puzzle.drawBoard(&ofs);
     }
 

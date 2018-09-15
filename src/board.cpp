@@ -47,9 +47,18 @@ void Board::generate_puzzle() {
     Ship cruiser(3,{LEFT,MIDDLE,RIGHT},{UP,MIDDLE,DOWN});
     Ship destroyer(2, {LEFT,RIGHT}, {UP,DOWN});
     Ship subimarine(1, {ATOM}, {ATOM});
-    // coordinates to cell where the ship will be placed
-    // placing the battleship
     
+    // coordinates to cell where the ship will be placed
+    placeShip(battleship);
+
+    for( int i = 0; i < 2; i++)
+        placeShip(cruiser);
+
+    for(int i = 0; i < 3; i++)
+        placeShip(destroyer);
+
+    for(int i = 0; i < 4; i++)
+        placeShip(subimarine);
     
 }
 
@@ -78,7 +87,7 @@ void Board::placeShip(Ship ship) {
         // #2 checking if the surrondings are free
             for( auto i(r - 1); i <= r + 1; ++i ){
                 for ( auto j(c - 1); j <= c + ship.size; ++j){
-                    if( cells[i][j] != WATER and cells[i][j] != HALO ){
+                    if( cells[i][j] != WATER and cells[i][j] != HALO and cells[i][j] != BORDER ){
                         horizontal_position = false;
                         break;
                     }
@@ -95,7 +104,7 @@ void Board::placeShip(Ship ship) {
         // #2 checking if the surrondings are free
             for( auto i(r - 1); i <= r + ship.size; ++i ){
                 for( auto j(c - 1); j <= c + 1; ++j ){
-                    if( cells[i][j] != WATER and cells[i][j] != HALO ){
+                    if( cells[i][j] != WATER and cells[i][j] != HALO and cells[i][j] != BORDER ){
                         vertical_position = false;
                         break;
                     }
