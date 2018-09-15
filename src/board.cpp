@@ -46,10 +46,10 @@ void Board::drawBoard() {
 void Board::generate_puzzle() {
 
     // creating the ships
-    Ship battleship(4);
-    Ship cruiser(3);
-    Ship destroyer(2);
-    Ship subimarine(1);
+    Ship battleship(4, {LEFT,MIDDLE,MIDDLE,RIGHT}, {UP,MIDDLE,MIDDLE,DOWN});
+    Ship cruiser(3,{LEFT,MIDDLE,RIGHT},{UP,MIDDLE,DOWN});
+    Ship destroyer(2, {LEFT,RIGHT}, {UP,DOWN});
+    Ship subimarine(1, {ATOM}, {ATOM});
     // coordinates to cell where the ship will be places
     // placing the battleship
     
