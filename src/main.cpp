@@ -17,19 +17,19 @@ int main (int argc, char *argv[]) {
     int max_rc = 15;
 
 // Checks arguments
-    if ( argc < 1 ) {
+    if ( argc > 1 ) {
         qty = stoi(argv[1]);
         if (!isValid (qty, min_qty, max_qty)) {
             cout << ">>> Invalid argument. Must be a value between " << min_qty << " and " << max_qty << "." << endl;
             return 1;
         }
-    } if ( argc < 2 ) {
+    } if ( argc > 2 ) {
         rows = stoi(argv[2]);
         if (!isValid (rows, min_rc, max_rc)) {
             cout << ">>> Invalid argument. Must be a value between " << min_rc << " and " << max_rc << "." << endl;
             return 1;
         }
-    } if ( argc < 3 ) {
+    } if ( argc > 3 ) {
         cols = stoi(argv[3]);
         if (!isValid (cols, min_rc, max_rc)) {
             cout << ">>> Invalid argument. Must be a value between " << min_rc << " and " << max_rc << "." << endl;
