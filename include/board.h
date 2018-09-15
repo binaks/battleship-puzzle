@@ -1,4 +1,9 @@
+#include <iostream>
 #include <vector>
+#include <iomanip>
+#include <fstream>
+#include <string>
+
 #include <string>
 #include "cell.h"
 #include "ship.h"
@@ -16,7 +21,7 @@ public:
     Board ();
     Board (int, int);
 
-    void drawBoard();     // Prints the board
+    void drawBoard(std::ofstream*); // Prints the board
     void generate_puzzle(); // Generate the puzzle
     void placeShip(); // Places a ship in a random valid location
 };

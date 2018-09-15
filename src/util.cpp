@@ -19,9 +19,22 @@ bool isValid (int arg, int min, int max) {
 
 // Writes generated puzzles in a file
 void writePuzzles (int qty, int rows, int cols) {
+    std::string puzzles = "puzzles"; // Name of the file where the puzzles will be written
+    std::ofstream ofs;
+
+    
+    // Opening the file
+    ofs.open(puzzles);
+    
+    // Writes as many puzzles as specified in qty
     for (auto i(0); i < qty; i++) {
+        ofs << "PUZZLE " << i+1 << std::endl;
+
         Board puzzle(rows, cols);
 
-        puzzle.drawBoard();
+        puzzle.drawBoard(&ofs);
     }
+
+    // Closing the file
+    ofs.close();
 }
