@@ -120,8 +120,28 @@ void Board::placeShip(Ship ship) {
     }
     if ( horizontal_position ) {
         // Place the ship in the horizontal position
+        for (auto i(r - 1); i <= r + 1; ++r){
+            for (auto j(c - 1); j <= ship.size + c; ++j){
+                if( i == r and ship.size > j - c ){
+                    cells[i][j] = ship.horizontal[j-c];
+                }
+                else{
+                    cells[i][j] = HALO;
+                }
+            }
+        }
     }
     else {
         // Place the ship in the vertical position
+        for (auto i(r -1); i <= r + ship.size; ++r){
+            for (auto j(c - 1); j <= c + 1; ++j){
+                if( j == c and ship.size > i - r){
+                    cells[i][j] = ship.vertical[i - r];
+                }
+                else{
+                    cells[i][j] = HALO;
+                }
+            }
+        } 
     } 
 }
