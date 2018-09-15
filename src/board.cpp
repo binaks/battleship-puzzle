@@ -56,13 +56,14 @@ void Board::generate_puzzle() {
 void Board::placeShip(Ship ship) {
     bool good_position = false;
     
-    while( not good_position ){
-        // initializing the randoms positions
-        int r = randomize(1,n_rows);
-        int c = randomize(1,n_cols);
-        // initializing the booleans
-        bool vertical_position = true;
-        bool horizontal_position = true;
+    // initializing the randoms positions
+    int r = randomize(1,n_rows);
+    int c = randomize(1,n_cols);
+    // initializing the booleans
+    bool vertical_position = true;
+    bool horizontal_position = true;
+    
+    while( not good_position ) {
         // finding a free position
         while(cells[r][c] != WATER){
             r = randomize(1,n_rows);
@@ -70,7 +71,7 @@ void Board::placeShip(Ship ship) {
         }
         // Checking if we can place the ship in the horizontal
         // #1 checking if it fits
-        if ( c + ship.size -1 > n_rows ){ 
+        if ( c + ship.size -1 > n_cols ){ 
             horizontal_position = false;
         }
         else{
@@ -84,5 +85,43 @@ void Board::placeShip(Ship ship) {
                 }
             }
         }
+
+        // Checking if we can place the ship in the vertical
+        // #1 checking if it fits
+        if ( r + ship.size - 1 > n_rows ){
+            vertical_position = false;
+        }
+        else{
+        // #2 checking if the surrondings are free
+            for( auto i(r - 1); i <= r + ship.size; ++i ){
+                for( auto j(c - 1); j <= c + 1; ++j ){
+                    if( cells[i][j] != WATER and cells[i][j] != HALO ){
+                        vertical_position = false;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Now we know if it's possible to place the ship and in which positions
+        if ( vertical_position or horizontal_position ){
+            good_position = true;
+        }
+    }
+    if ( vertical_position and horizontal_position ) {
+        // lets randomize if it's gonna be vertical or horizontal
+        int v_or_h = randomize(0,1);
+        if ( v_or_h == 0 ){
+            horizontal_position = false;
+        }
+        else{
+            vertical_position = false;
+        }
+    }
+    if ( horizontal_position ) {
+        // Place the ship in the horizontal position
+    }
+    else {
+        // Place the ship in the vertical position
     } 
 }
