@@ -51,15 +51,38 @@ void Board::generate_puzzle() {
     // placing the battleship
     
     
-    int x = randomize(1,n_rows);
-    int y = randomize(1,n_cols);
-    // finding a free position
-    while ( cells[x][y] != WATER ){
-        x = randomize(1,n_rows);
-        y = randomize(1,n_cols);
-    }
 }
 
-void Board::placeShip() {
-
+void Board::placeShip(Ship ship) {
+    bool good_position = false;
+    
+    while( not good_position ){
+        // initializing the randoms positions
+        int r = randomize(1,n_rows);
+        int c = randomize(1,n_cols);
+        // initializing the booleans
+        bool vertical_position = true;
+        bool horizontal_position = true;
+        // finding a free position
+        while(cells[r][c] != WATER){
+            r = randomize(1,n_rows);
+            c = randomize(1,n_cols);
+        }
+        // Checking if we can place the ship in the horizontal
+        // #1 checking if it fits
+        if ( c + ship.size -1 > n_rows ){ 
+            horizontal_position = false;
+        }
+        else{
+        // #2 checking if the surrondings are free
+            for( auto i(r - 1); i <= r + 1; ++i ){
+                for ( auto j(c - 1); j <= c + ship.size; ++j){
+                    if( cells[i][j] != WATER and cells[i][j] != HALO ){
+                        horizontal_position = false;
+                        break;
+                    }
+                }
+            }
+        }
+    } 
 }

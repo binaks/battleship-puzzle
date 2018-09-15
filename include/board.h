@@ -23,7 +23,7 @@ public:
 
     void drawBoard(std::ofstream*); // Prints the board
     void generate_puzzle(); // Generate the puzzle
-    void placeShip(); // Places a ship in a random valid location
+    void placeShip(Ship); // Places a ship in a random valid location
 };
 
 #endif
