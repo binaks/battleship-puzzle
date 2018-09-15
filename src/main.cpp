@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "../include/ship.h"
 #include "../include/board.h"
 #include "../include/cell.h"
@@ -16,7 +17,7 @@ int main (int argc, char *argv[]) {
     int min_rc = 10;
     int max_rc = 15;
 
-// Checks arguments
+    // Checks arguments
     if ( argc > 1 ) {
         qty = stoi(argv[1]);
         if (!isValid (qty, min_qty, max_qty)) {
@@ -38,10 +39,10 @@ int main (int argc, char *argv[]) {
     } if ( argc > 4 ) {
         cout << ">>> Invalid number of arguments." << endl;
     }
+    // Ends argument checking
 
-// Ends argument checking
-
-
+    // Writes the generated puzzles in a file
+    writePuzzles (qty, rows, cols);
 
     return 0;
 }

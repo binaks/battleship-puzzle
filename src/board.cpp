@@ -50,7 +50,7 @@ void Board::generate_puzzle() {
     Ship cruiser(3,{LEFT,MIDDLE,RIGHT},{UP,MIDDLE,DOWN});
     Ship destroyer(2, {LEFT,RIGHT}, {UP,DOWN});
     Ship subimarine(1, {ATOM}, {ATOM});
-    // coordinates to cell where the ship will be places
+    // coordinates to cell where the ship will be placed
     // placing the battleship
     
     
