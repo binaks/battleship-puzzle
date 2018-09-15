@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include "../include/board.h"
+#include "../include/util.h"
 
 Board::Board()
 : Board(10,10) {}
@@ -45,7 +46,7 @@ void Board::drawBoard() {
 void Board::generate_puzzle() {
 
     // creating the ships
-    Ship battle_ship(4, );
+    Ship battleship(4);
     Ship cruiser(3);
     Ship destroyer(2);
     Ship subimarine(1);
@@ -59,16 +60,6 @@ void Board::generate_puzzle() {
     while ( cells[x][y] != WATER ){
         x = randomize(1,n_rows);
         y = randomize(1,n_cols);
-    }
-
-    // placing the battleship
-    if (ship.size == 4) {
-        // if the cell is free
-        if (cells[x][y] == WATER) {
-            // TODO: place ship in the cell
-        } else {
-            // TODO: place ship in another cell
-        } 
     }
 }
 

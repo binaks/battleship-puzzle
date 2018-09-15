@@ -18,7 +18,7 @@ public:
 
     void drawBoard();     // Prints the board
     void generate_puzzle(); // Generate the puzzle
-    void placeShip(Ship); // Places a ship in a random valid location
+    void placeShip(); // Places a ship in a random valid location
 };
 
 #endif
