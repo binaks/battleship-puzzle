@@ -7,10 +7,10 @@ Board::Board()
 : Board(10,10) {}
 
 
-Board::Board(int n_cols, int n_rows) {
+Board::Board(int n_rows, int n_cols) {
 
-    this->n_cols = n_cols;
     this->n_rows = n_rows;
+    this->n_cols = n_cols;
     
     // Initializing the matrix with water tiles 
     std::vector <Cell> placeholder;

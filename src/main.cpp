@@ -7,26 +7,20 @@ using namespace std;
 
 int main (int argc, char *argv[]) {
     int qty;
-    int cols;
     int rows;
+    int cols;
 
     if ( argc == 1 ) {
         qty = 1;
     } else if ( argc == 2 ) {
-        
-    }
-     
-    if ( argc > 3 ){
         qty = stoi(argv[1]);
-        cols = stoi(argv[2]);
-        rows = stoi(argv[3]);
-
-        Board cruiser(cols,rows);
-        cruiser.drawBoard();
-    }
-    else{
-        Board cruiser;
-        cruiser.drawBoard();
+    } else if ( argc == 3 ){
+        qty = stoi(argv[1]);
+        rows = stoi(argv[2]);
+    } else if ( argc == 4){
+        qty = stoi(argv[1]);
+        rows = stoi(argv[2]);
+        cols = stoi(argv[3]);
     }
 
     return 0;

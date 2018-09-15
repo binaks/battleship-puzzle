@@ -8,8 +8,8 @@
 
 class Board {
 public:
-    int n_cols;
     int n_rows;
+    int n_cols;
 
     std::vector < std::vector <Cell> > cells;
 
