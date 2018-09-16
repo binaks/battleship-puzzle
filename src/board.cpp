@@ -46,7 +46,7 @@ void Board::generate_puzzle() {
     Ship battleship(4, {LEFT,MIDDLE,MIDDLE,RIGHT}, {UP,MIDDLE,MIDDLE,DOWN});
     Ship cruiser(3,{LEFT,MIDDLE,RIGHT},{UP,MIDDLE,DOWN});
     Ship destroyer(2, {LEFT,RIGHT}, {UP,DOWN});
-    Ship subimarine(1, {ATOM}, {ATOM});
+    Ship submarine(1, {ATOM}, {ATOM});
     
     // coordinates to cell where the ship will be placed
     placeShip(battleship);
@@ -58,14 +58,14 @@ void Board::generate_puzzle() {
         placeShip(destroyer);
 
     for(int i = 0; i < 4; i++)
-        placeShip(subimarine);
+        placeShip(submarine);
     
 }
 
 void Board::placeShip(Ship ship) {
     bool good_position = false;
     
-    // initializing the randoms positions
+    // initializing the random positions
     int r = randomize(1,n_rows);
     int c = randomize(1,n_cols);
     // initializing the booleans
@@ -73,18 +73,20 @@ void Board::placeShip(Ship ship) {
     bool horizontal_position = true;
     
     while( not good_position ) {
+
         // finding a free position
         while(cells[r][c] != WATER){
             r = randomize(1,n_rows);
             c = randomize(1,n_cols);
         }
+
         // Checking if we can place the ship in the horizontal
         // #1 checking if it fits
-        if ( c + ship.size -1 > n_cols ){ 
+        if ( c + ship.size - 1 > n_cols ){ 
             horizontal_position = false;
         }
-        else{
-        // #2 checking if the surrondings are free
+        else {
+        // #2 checking if the surroundings are free
             for( auto i(r - 1); i <= r + 1; ++i ){
                 for ( auto j(c - 1); j <= c + ship.size; ++j){
                     if( cells[i][j] != WATER and cells[i][j] != HALO and cells[i][j] != BORDER ){
@@ -100,8 +102,8 @@ void Board::placeShip(Ship ship) {
         if ( r + ship.size - 1 > n_rows ){
             vertical_position = false;
         }
-        else{
-        // #2 checking if the surrondings are free
+        else {
+        // #2 checking if the surroundings are free
             for( auto i(r - 1); i <= r + ship.size; ++i ){
                 for( auto j(c - 1); j <= c + 1; ++j ){
                     if( cells[i][j] != WATER and cells[i][j] != HALO and cells[i][j] != BORDER ){
@@ -123,16 +125,16 @@ void Board::placeShip(Ship ship) {
         if ( v_or_h == 0 ){
             horizontal_position = false;
         }
-        else{
+        else {
             vertical_position = false;
         }
     }
     if ( horizontal_position ) {
         // Place the ship in the horizontal position
-        for (auto i(r - 1); i <= r + 1; ++r){
-            for (auto j(c - 1); j <= ship.size + c; ++j){
+        for (auto i(r - 1); i <= r + 1; ++i){
+            for (auto j(c - 1); j <= c + ship.size; ++j){
                 if( i == r and ship.size > j - c ){
-                    cells[i][j] = ship.horizontal[j-c];
+                    cells[i][j] = ship.horizontal[j - c];
                 }
                 else{
                     cells[i][j] = HALO;
@@ -142,7 +144,7 @@ void Board::placeShip(Ship ship) {
     }
     else {
         // Place the ship in the vertical position
-        for (auto i(r -1); i <= r + ship.size; ++r){
+        for (auto i(r - 1); i <= r + ship.size; ++i){
             for (auto j(c - 1); j <= c + 1; ++j){
                 if( j == c and ship.size > i - r){
                     cells[i][j] = ship.vertical[i - r];
