@@ -1,2 +1,2 @@
 bla : src/*.cpp
-	g++ src/*.cpp -o bla -Wall -std=c++11
+	g++ src/*.cpp -o bla -Wall -Og -ggdb -g -std=c++11
