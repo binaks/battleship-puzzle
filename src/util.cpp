@@ -30,14 +30,16 @@ void writePuzzles (int qty, int rows, int cols) {
     ofs.open(puzzles);
     
     // Writes as many puzzles as specified in qty
-    for (auto i(0); i < qty; i++) {
-        ofs << "PUZZLE " << i+1 << std::endl;
+    
+    // We commit this parts because it's not working to n puzzles
+    //for (auto i(0); i < qty; i++) {
+        ofs << "PUZZLE " << /*i+*/1 << std::endl;
 
         // Placeholder for randomly generated puzzle
         Board puzzle(rows, cols);
         puzzle.generate_puzzle();
         puzzle.drawBoard(&ofs);
-    }
+    //}
 
     // Closing the file
     ofs.close();

@@ -7,6 +7,6 @@ std::string cellToString (Cell c) {
     else if (c == UP    ) return "▲";
     else if (c == DOWN  ) return "▼";
     else if (c == ATOM  ) return "●";
-    else if (c == BORDER) return " ";
+    else if (c == BORDER) return "≈";
     else return "≈";
 } 

@@ -25,13 +25,13 @@ Board::Board(int n_rows, int n_cols) {
         }
     }
 }
-
+// Drawing the puzzle ignoring the border cells
 void Board::drawBoard( std::ofstream *ofs ) {
     *ofs << std::endl;
 
-    for (auto i(0); i <= n_rows + 1; ++i) {
+    for (auto i(1); i <= n_rows; ++i) {
         *ofs << std::setw(20) << std::setfill(' ');
-        for (auto j(0); j <= n_cols + 1; ++j) {
+        for (auto j(1); j <= n_cols; ++j) {
             *ofs << cellToString(cells[i][j]) << " ";
         }
         *ofs << std::endl;
