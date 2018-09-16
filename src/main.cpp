@@ -7,7 +7,10 @@
 
 using namespace std;
 
+
 int main (int argc, char *argv[]) {
+
+
     int qty = 1;
     int rows = 10;
     int cols = 10;

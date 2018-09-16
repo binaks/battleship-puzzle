@@ -1,13 +1,16 @@
-#include <cstdlib>
-#include <ctime>
+#include <random>
 
 #include "../include/board.h"
 #include "../include/util.h"
 
+using namespace std;
 // Returns a random number in a range
 int randomize(int init_range, int end_range){
-    srand(time(0));
-    return rand() % (end_range - init_range) + init_range;
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dist(init_range,end_range);
+
+    return dist(gen);
 }
 
 // Checks if the argument given is in a valid range
